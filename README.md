@@ -6,8 +6,8 @@ Update
 Updated the plugin for Rails 3 (v3.0.7 clean install)
 
   * Recoded Generators
-	* Moved tasks/geonames_rails.rake to lib/tasks/geonames_rails.rake
-	* Added force_encoding to correct encoding errors in puller.rb
+  * Moved tasks/geonames_rails.rake to lib/tasks/geonames_rails.rake
+  * Added force_encoding to correct encoding errors in puller.rb
 
 Thanks to John Barton (joho) for saving me some time, hopefully this fork does the same.
 
