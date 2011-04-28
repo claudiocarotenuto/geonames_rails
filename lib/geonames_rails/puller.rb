@@ -12,7 +12,7 @@ module GeonamesRails
 
         target_file_name = File.join(target_dir, file_name)
         File.open target_file_name, 'w' do |f|
-          f.write(remote_file.read)
+          f.write(remote_file.read.force_encoding("UTF-8"))
         end
         remote_file.close
         
