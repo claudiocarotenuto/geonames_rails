@@ -1,1 +1,0 @@
-require 'geonames_rails'

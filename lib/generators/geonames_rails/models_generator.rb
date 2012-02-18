@@ -2,10 +2,7 @@ require 'rails/generators'
  
 module GeonamesRails
   module Generators
-    class ModelsGenerator < Rails::Generator::Base
-      #argument :actions, :type => :array, :default => [], :banner => "action action"
-      check_class_collision :suffix => "GeonamesRails"
- 
+    class ModelsGenerator < Rails::Generators::Base
       source_root File.expand_path(File.join(File.dirname(__FILE__), 'models_templates'))
  
       def manifest

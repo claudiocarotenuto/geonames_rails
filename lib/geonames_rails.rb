@@ -10,4 +10,4 @@ require 'geonames_rails/writers/active_record'
 
 require 'generators/geonames_rails/migration_generator'
 require 'generators/geonames_rails/models_generator'
-puts 'this code runs'
+#puts 'this code runs'

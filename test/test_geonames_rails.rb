@@ -1,7 +1,8 @@
 require 'test/unit'
 require 'fetch_geonames'
 
-class HolaTest < Test::Unit::TestCase
+# TODO: write tests
+class GeonamesRailsTest < Test::Unit::TestCase
   def test_something
     assert true
   end

@@ -8,7 +8,11 @@ Copy this into your application's Rakefile:
 
   Dir["#{Gem.searcher.find('geonames_rails').full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
  
-  
+And to generate the migration and models, use
+
+  rails generate geonames_rails:migration
+  rails generate geonames_rails:models
+
 Thanks to Garrett Davis for converting it into Rails 3 and John Barton for making the thing in the first place.
 
 
