@@ -1,5 +1,17 @@
 Geonames-Rails
 ===
+Update 2
+---
+Converted the plugin into a gem
+
+Copy this into your application's Rakefile:
+
+  Dir["#{Gem.searcher.find('geonames_rails').full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
+ 
+  
+Thanks to Garrett Davis for converting it into Rails 3 and John Barton for making the thing in the first place.
+
+
 Update
 ---
 

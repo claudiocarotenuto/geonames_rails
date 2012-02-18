@@ -1,3 +1,5 @@
+require 'geonames_rails'
+
 namespace :geonames_rails do
   desc 'pull down the geonames data from the server'
   task :pull_data => :environment do

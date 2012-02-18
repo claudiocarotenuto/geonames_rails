@@ -21,7 +21,7 @@ module GeonamesRails
   protected
     def load_countries
       log_message "opening countries file"
-      File.open(File.join(RAILS_ROOT, 'tmp', 'countryInfo.txt'), 'r') do |f|
+      File.open(File.join(Rails.root, 'tmp', 'countryInfo.txt'), 'r') do |f|
         f.each_line do |line|
           # skip comments
           next if line.match(/^#/) || line.match(/^iso/i)

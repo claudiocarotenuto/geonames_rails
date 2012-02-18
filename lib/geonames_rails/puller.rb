@@ -2,7 +2,7 @@ module GeonamesRails
   class Puller
     def pull
       @temp_geonames_files = []
-      target_dir = File.join(RAILS_ROOT, 'tmp')
+      target_dir = File.join(Rails.root, 'tmp')
       
       file_names = %w(cities1000.zip cities5000.zip cities15000.zip admin1Codes.txt countryInfo.txt)
       file_names.each do |file_name|
