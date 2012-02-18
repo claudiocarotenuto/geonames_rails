@@ -17,11 +17,14 @@ class CreateGeonamesTables < ActiveRecord::Migration
       t.string :capital
       # [6] areaInSqKm
       # [7] population
+      t.integer :population
       # [8] continent
       t.string :continent
       # [9] top level domain
       # [10] Currency code
+      t.string :currency_code
       # [11] Currency name
+      t.string :currency_name
       # [12] Phone
       # [13] Postal Code Format
       # [14] Postal Code Regex
@@ -58,6 +61,7 @@ class CreateGeonamesTables < ActiveRecord::Migration
       # [12] admin3 code : code for third level administrative division, varchar(20)
       # [13] admin4 code : code for fourth level administrative division, varchar(20)
       # [14] population : integer
+      t.integer :population
       # [15] elevation : in meters, integer
       # [16] gtopo30 : average elevation of 30'x30' (ca 900mx900m) area in meters, integer
       # [17] timezone : the timezone id (see file timeZone.txt)
