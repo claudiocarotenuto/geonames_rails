@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'geonames_rails'
-  s.version = '0.0.2'
+  s.version = '0.1.0'
   s.date = '2012-02-18'
   s.summary = "Geonames.org support for Rails applications"
   s.description = "Fetch data from geonames.org and make the required models"

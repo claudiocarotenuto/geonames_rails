@@ -30,7 +30,7 @@ class CreateGeonamesTables < ActiveRecord::Migration
       # [14] Postal Code Regex
       # [15] Languages
       # [16] Geoname id
-      t.integer :geonames_id, :null => false
+      t.integer :geonames_id #, :null => false
       # [17] Neighbours
       # [18] Equivalent Fips Code
     end

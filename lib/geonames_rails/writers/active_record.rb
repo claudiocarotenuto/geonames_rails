@@ -25,9 +25,11 @@ module GeonamesRails
       def write_cities(country_code, city_mappings)    
         country = Country.find_by_iso_code_two_letter(country_code)
         
+        #puts country
+        
         city_mappings.each do |city_mapping|
           city = City.find_or_initialize_by_geonames_id(city_mapping[:geonames_id])
-          city.country = country
+          city.country_id = country.id
         
           city.attributes = city_mapping.slice(:name,
                                                :latitude,
