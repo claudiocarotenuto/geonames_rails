@@ -46,9 +46,9 @@ class CreateGeonamesTables < ActiveRecord::Migration
       # [1] name : name of geographical point (utf8) varchar(200)
       t.string :name, :null => false
       # [2] asciiname : name of geographical point in plain ascii characters, varchar(200)
-      t.string :asciiname
+      t.string :ascii_name
       # [3] alternatenames : alternatenames, comma separated varchar(4000)
-      t.text :alternatenames
+      t.text :alternate_name
       # [4] latitude : latitude in decimal degrees (wgs84)
       t.decimal :latitude, :precision => 14, :scale => 8, :null => false
       # [5] longitude : longitude in decimal degrees (wgs84)

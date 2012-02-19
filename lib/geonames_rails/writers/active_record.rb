@@ -35,8 +35,8 @@ module GeonamesRails
             city.country_id = country.id
           
             city.attributes = city_mapping.slice(:name,
-                                                 :asciiname,
-                                                 :alternatenames,
+                                                 :ascii_name,
+                                                 :alternate_name,
                                                  :latitude,
                                                  :longitude,
                                                  :country_iso_code_two_letters,
