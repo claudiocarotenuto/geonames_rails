@@ -1,6 +1,7 @@
 require 'geonames_rails/mappings/base'
 require 'geonames_rails/mappings/city'
 require 'geonames_rails/mappings/country'
+require 'zip/zipfilesystem'
 
 module GeonamesRails
   
@@ -15,7 +16,7 @@ module GeonamesRails
     def load_data
       @puller.pull if @puller # pull geonames files down
       
-      #load_countries
+      load_countries
       
       load_cities
       
@@ -40,7 +41,6 @@ module GeonamesRails
     
     def load_cities
       %w(cities1000 cities5000 cities15000).each do |city_file|
-      #%w(cities15000).each do |city_file|
         load_cities_file(city_file)
       end
     end
@@ -48,8 +48,11 @@ module GeonamesRails
     def load_cities_file(city_file)
       log_message "Loading city file #{city_file}"
       cities = []
-      File.open(File.join(Rails.root, 'tmp', "#{city_file}.txt"), 'r') do |f|
-        f.each_line { |line| cities << Mappings::City.new(line) }
+
+      Zip::ZipFile.open(File.join(Rails.root, 'tmp', "#{city_file}.zip"), 'r') do |zipfile|
+        zipfile.each do |f|
+          zipfile.read(f).split(/\n/).each { |line| cities << Mappings::City.new(line) }
+        end
       end
       
       log_message "#{cities.length} cities to process"

@@ -19,10 +19,10 @@ module GeonamesRails
         @temp_geonames_files << target_file_name
         
         file_base_name, file_extension = file_name.split('.')
-        if file_extension == 'zip'
-          `unzip #{target_file_name} -d #{target_dir}`
-          @temp_geonames_files << File.join(target_dir, "#{file_base_name}.txt")
-        end
+        #if file_extension == 'zip'
+        #  `unzip #{target_file_name} -d #{target_dir}`
+        #  @temp_geonames_files << File.join(target_dir, "#{file_base_name}.txt")
+        #end
         
       end
     end

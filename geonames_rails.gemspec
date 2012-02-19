@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'geonames_rails'
-  s.version = '0.1.0'
+  s.version = '0.1.5'
   s.date = '2012-02-18'
   s.summary = "Geonames.org support for Rails applications"
   s.description = "Fetch data from geonames.org and make the required models"
@@ -10,5 +10,8 @@ Gem::Specification.new do |s|
 
   s.files        = Dir["{lib}/**/*.rb", "{lib}/**/*.rake", "bin/*", "LICENSE", "*.md"]
   s.require_path = 'lib'
+
+  s.add_runtime_dependency "rubyzip"
+  s.add_development_dependency "rubyzip"
 
 end
