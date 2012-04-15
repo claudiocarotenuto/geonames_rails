@@ -59,9 +59,13 @@ class CreateGeonamesTables < ActiveRecord::Migration
       t.string :country_iso_code_two_letters
       # [9] cc2 : alternate country codes, comma separated, ISO-3166 2-letter country code, 60 characters
       # [10] admin1 code : fipscode (subject to change to iso code), isocode for the us and ch, see file admin1Codes.txt for display names of this code; varchar(20)
+      t.string :admin_1_code
       # [11] admin2 code : code for the second administrative division, a county in the US, see file admin2Codes.txt; varchar(80)
+      t.string :admin_2_code
       # [12] admin3 code : code for third level administrative division, varchar(20)
+      t.string :admin_3_code
       # [13] admin4 code : code for fourth level administrative division, varchar(20)
+      t.string :admin_4_code
       # [14] population : integer
       t.integer :population
       # [15] elevation : in meters, integer
@@ -72,10 +76,23 @@ class CreateGeonamesTables < ActiveRecord::Migration
     end
     
     add_index :cities, :geonames_id, :unique => true
+
+    create_table :divisions do |t|
+      t.integer :country_id
+      t.string :code
+      t.string :full_code
+      t.string :name
+      t.string :ascii_name
+      t.integer :geonames_id
+    end
+
+    add_index :divisions, :full_code, :unique => true
+    add_index :divisions, :code
+    add_index :divisions, :geonames_id, :unique => true
   end
   
   def self.down
     # drop all the tables
-    %w(countries cities).each { |t| drop_table t }
+    %w(countries cities divisions).each { |t| drop_table t }
   end
 end

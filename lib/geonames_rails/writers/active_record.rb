@@ -24,6 +24,23 @@ module GeonamesRails
         "#{created_or_updating} db record for #{iso_code}"
       end
       
+      def write_division(division_mapping)  
+        iso_code = division_mapping[:full_code][0..1]
+        country = Country.find_by_iso_code_two_letter(iso_code)
+      
+        division = Division.find_or_initialize_by_geonames_id(division_mapping[:geonames_id])
+        created_or_updating = division.new_record? ? 'Creating' : 'Updating'
+        division.country_id = country.id
+        division.code = division_mapping[:full_code][3..-1]
+
+        division.attributes = division_mapping.slice(:full_code,
+                                                     :name,
+                                                     :ascii_name,
+                                                     :geonames_id)
+        division.save!
+        
+        "#{created_or_updating} db record for #{division_mapping[:full_code]}"
+      end
 
       
       def write_cities(country_code, city_mappings)    
@@ -42,7 +59,11 @@ module GeonamesRails
                                                  :country_iso_code_two_letters,
                                                  :population,
                                                  :geonames_timezone_id,
-                                                 :geonames_id)
+                                                 :geonames_id,
+                                                 :admin_1_code,
+                                                 :admin_2_code,
+                                                 :admin_3_code,
+                                                 :admin_4_code)
           
             city.save!
           end

@@ -1,6 +1,7 @@
 require 'geonames_rails/mappings/base'
 require 'geonames_rails/mappings/city'
 require 'geonames_rails/mappings/country'
+require 'geonames_rails/mappings/division'
 require 'zip/zipfilesystem'
 
 module GeonamesRails
@@ -17,8 +18,8 @@ module GeonamesRails
       @puller.pull if @puller # pull geonames files down
       
       load_countries
-      
       load_cities
+      load_divisions
       
       @puller.cleanup if @puller # cleanup the geonames files
     end
@@ -38,14 +39,26 @@ module GeonamesRails
         end
       end
     end
-    
-    def load_cities
-      %w(cities1000 cities5000 cities15000).each do |city_file|
-        load_cities_file(city_file)
+
+    def load_divisions
+      log_message "opening divisions file"
+      File.open(File.join(Rails.root, 'tmp', 'admin1CodesASCII.txt'), 'r') do |f|
+        f.each_line do |line|
+          # skip comments
+          next if line.match(/^#/) || line.match(/^iso/i)
+
+          division_mapping = Mappings::Division.new(line)
+          result = @writer.write_division(division_mapping)
+          
+          #log_message result
+        end
       end
+
     end
     
-    def load_cities_file(city_file)
+    def load_cities
+      city_file = "cities1000"
+
       log_message "Loading city file #{city_file}"
       cities = []
 

@@ -7,6 +7,12 @@ module GeonamesRails
         "Dry run of country #{country_mapping[:name]} should have been OK"
       end
       
+      def write_division(division_mapping)
+        raise "must have a of division mapping" unless division_mapping
+        
+        "Dry run of country #{division_mapping[:division_id]} should have been OK"
+      end
+
       def write_cities(country_code, city_mappings)
         raise "can't create cities without a country" unless country_code
         raise "must have a set of city mappings" unless city_mappings
