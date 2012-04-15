@@ -41,6 +41,7 @@ class CreateGeonamesTables < ActiveRecord::Migration
     # create cities
     create_table :cities do |t|
       t.integer :country_id, :null => false
+      t.integer :division_id
       # [0] geonameid : integer id of record in geonames database
       t.integer :geonames_id, :null => false
       # [1] name : name of geographical point (utf8) varchar(200)

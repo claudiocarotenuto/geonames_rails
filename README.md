@@ -8,10 +8,16 @@ Copy this into your application's Rakefile:
 
   Dir["#{Gem.searcher.find('geonames_rails').full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
  
-And to generate the migration and models, use
+To generate the migration and models, use
 
   rails generate geonames_rails:migration
   rails generate geonames_rails:models
+
+And do do the magic, run
+
+  rake geonames_rails:pull  # to download the data
+  rake geonames_rails:load  # to load it
+  rake geonames_rails:run   # to do both at once (use for heroku)
 
 Thanks to Garrett Davis for converting it into Rails 3 and John Barton for making the thing in the first place.
 
