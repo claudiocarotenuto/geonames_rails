@@ -18,7 +18,7 @@ module GeonamesRails
       @puller.pull if @puller # pull geonames files down
       
       load_countries
-      load_divisions
+      #load_divisions
       load_cities
       
       @puller.cleanup if @puller # cleanup the geonames files

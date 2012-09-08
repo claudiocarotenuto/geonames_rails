@@ -78,22 +78,22 @@ class CreateGeonamesTables < ActiveRecord::Migration
     
     add_index :cities, :geonames_id, :unique => true
 
-    create_table :divisions do |t|
-      t.integer :country_id
-      t.string :code
-      t.string :full_code
-      t.string :name
-      t.string :ascii_name
-      t.integer :geonames_id
-    end
+    #create_table :divisions do |t|
+    #  t.integer :country_id
+    #  t.string :code
+    #  t.string :full_code
+    #  t.string :name
+    #  t.string :ascii_name
+    #  t.integer :geonames_id
+    #end
 
-    add_index :divisions, :full_code, :unique => true
-    add_index :divisions, :code
-    add_index :divisions, :geonames_id, :unique => true
+    #add_index :divisions, :full_code, :unique => true
+    #add_index :divisions, :code
+    #add_index :divisions, :geonames_id, :unique => true
   end
   
   def self.down
     # drop all the tables
-    %w(countries cities divisions).each { |t| drop_table t }
+    %w(countries cities).each { |t| drop_table t }
   end
 end

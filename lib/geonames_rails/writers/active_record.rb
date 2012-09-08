@@ -65,8 +65,8 @@ module GeonamesRails
                                                  :admin_3_code,
                                                  :admin_4_code)
 
-            division = Division.find_by_full_code(city.country_iso_code_two_letters+"."+city.admin_1_code )
-            city.division_id = division.id unless division.blank?
+            #division = Division.find_by_full_code(city.country_iso_code_two_letters+"."+city.admin_1_code )
+            #city.division_id = division.id unless division.blank?
           
             city.save!
           end
