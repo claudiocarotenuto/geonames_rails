@@ -57,7 +57,7 @@ module GeonamesRails
     end
     
     def load_cities
-      city_file = "cities1000"
+      city_file = "cities15000"
 
       log_message "Loading city file #{city_file}"
       cities = []
