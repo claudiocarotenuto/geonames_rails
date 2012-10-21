@@ -6,18 +6,30 @@ Converted the plugin into a gem
 
 Copy this into your application's Rakefile:
 
-  Dir["#{Gem.searcher.find('geonames_rails').full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
- 
+```ruby
+Dir["#{Gem::Specification.find_by_name('geonames_rails').full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
+```
+
 To generate the migration and models, use
 
+```ruby
   rails generate geonames_rails:migration
   rails generate geonames_rails:models
+```
 
-And do do the magic, run
+Migrate your database with
 
+```ruby
+rake db:migrate
+```
+
+And to do the magic, run
+
+```ruby
   rake geonames_rails:pull  # to download the data
   rake geonames_rails:load  # to load it
   rake geonames_rails:run   # to do both at once (use for heroku)
+```ruby
 
 Thanks to Garrett Davis for converting it into Rails 3 and John Barton for making the thing in the first place.
 
@@ -70,7 +82,7 @@ Well, you're covered. The method for writing out the country/city data is fully 
   class MyCustomGeonamesWriter
     def write_country(country_mapping)
     end
-  
+
     def write_cities(country_code, city_mappings)
     end
   end
@@ -94,7 +106,7 @@ DONE
   * allow you to declare which fields you're using from geonames
     - currently store the mappings between field names and column of data in classing in the Mappings module
     - pulled out the writing of the records into a class
-    - changed the loader so you can plug in whatever writer you want 
+    - changed the loader so you can plug in whatever writer you want
   * write the text to AR converter
 
 ---
