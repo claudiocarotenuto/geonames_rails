@@ -7,7 +7,8 @@ Converted the plugin into a gem
 Copy this into your application's Rakefile:
 
 ```ruby
-Dir["#{Gem::Specification.find_by_name('geonames_rails').full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
+geonames_gem = RUBY_VERSION < "1.9.3" ? Gem.searcher.find("geonames_rails") : Gem::Specification.find_by_name('geonames_rails')
+Dir["#{geonames_gem.full_gem_path}/lib/tasks/*.rake"].each { |ext| load ext }
 ```
 
 To generate the migration and models, use
@@ -29,7 +30,7 @@ And to do the magic, run
   rake geonames_rails:pull  # to download the data
   rake geonames_rails:load  # to load it
   rake geonames_rails:run   # to do both at once (use for heroku)
-```ruby
+```
 
 Thanks to Garrett Davis for converting it into Rails 3 and John Barton for making the thing in the first place.
 
