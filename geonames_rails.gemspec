@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.files        = Dir["{lib}/**/*.rb", "{lib}/**/*.rake", "bin/*", "LICENSE", "*.md"]
   s.require_path = 'lib'
 
-  s.add_runtime_dependency "rubyzip"
-  s.add_development_dependency "rubyzip"
+  s.add_runtime_dependency "rubyzip", '0.9.9'
+  s.add_development_dependency "rubyzip", '0.9.9'
 
 end

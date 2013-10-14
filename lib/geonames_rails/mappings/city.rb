@@ -11,7 +11,7 @@ module GeonamesRails
           # [2] asciiname : name of geographical point in plain ascii characters, varchar(200)
           :ascii_name => 2,
           # [3] alternatenames : alternatenames, comma separated varchar(4000)
-          :alternate_name => 3,
+          :alternate_names => 3,
           # [4] latitude : latitude in decimal degrees (wgs84)
           :latitude => 4,
           # [5] longitude : longitude in decimal degrees (wgs84)
